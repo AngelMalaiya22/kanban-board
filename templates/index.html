@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kanban Board</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="top">
+    <h1>Kanban Board</h1>
+    <p id="summary" class="summary"></p>
+    <button id="add-btn" class="btn primary">Add task</button>
+  </header>
+
+  <p id="toast" class="toast" role="status" aria-live="polite" hidden></p>
+  <main id="board" class="board" aria-label="Kanban board"></main>
+
+  <dialog id="dialog">
+    <form id="task-form" method="dialog">
+      <h2 id="dialog-title">New task</h2>
+      <label>Title
+        <input id="f-title" maxlength="120" required autocomplete="off">
+      </label>
+      <label>Description
+        <textarea id="f-desc" maxlength="500" rows="3"></textarea>
+      </label>
+      <label>Priority
+        <select id="f-priority">
+          <option value="low">Low</option>
+          <option value="medium" selected>Medium</option>
+          <option value="high">High</option>
+        </select>
+      </label>
+      <div class="actions">
+        <button type="button" id="cancel" class="btn">Cancel</button>
+        <button type="submit" class="btn primary">Save task</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
